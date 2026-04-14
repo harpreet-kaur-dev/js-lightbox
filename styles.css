@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Added box-sizing to ensure padding and borders don't affect element widths */
+}
+
+#gallery-section {
+    width: 100%;
+    padding: 20px; /* Added some padding for better spacing */
+}
+
+#gallery-section .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    padding: 10px;
+    text-align: center;  /* Added text-align center for better centering on small screens */
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;  /* Changed to space-around for more balanced spacing */
+    background-color: #e4e0e0;
+    align-items: center;
+}
+
+.gallery-item {
+    flex-basis: 30%;  
+    margin: 1%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;  /* Ensure images maintain their aspect ratio */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Modal overlay */
+.lightBoxOverLay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+/* Modal content */
+.modelDiv {
+    position: fixed;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    max-width:850px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.modelDiv img {
+    width: 100%;
+    height:100%;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.modelDiv .close {
+    position: absolute;
+    right: 10px;
+    background-color: white;
+    color: #000;
+    border: none;
+    font-size: 30px;  /* Reduced font size for mobile */
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 0px 10px;
+    border-radius: 100px;
+}
+
+.modelDiv .close:hover {
+    background-color: #ccc;
+}
+
+.lightBoxOverLayShow {
+    display: block;
+}
+
+.showModel {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+
+@media (max-width: 768px) {
+    #gallery-section .title {
+        font-size: 50px;
+        padding: 10px 5px; 
+    }
+
+    .gallery-item {
+        flex-basis: 45%; 
+    }
+
+    .modelDiv {
+        width: 98%;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    #gallery-section .title {
+        font-size: 35px;
+    }
+
+    .gallery-item {
+        flex-basis: 100%;  
+    }
+
+   .modelDiv {
+        width: 98%;
+    }  
+
+    .modelDiv .close {
+        font-size: 30px;  
+    }
+}
+
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    /* border-radius: 50%; */
+    z-index: 1001; /* Make sure buttons are above the modal content */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.prev {
+    left: 10px; /* Position the Prev button on the left */
+}
+
+.next {
+    right: 10px; /* Position the Next button on the right */
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+
+
+
+
+
